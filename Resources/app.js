@@ -1,6 +1,6 @@
 var win = Ti.UI.createWindow({
     backgroundColor: 'white',
-    layout: 'vertical',
+    layout: 'horizontal',
     navBarHidden: true
 });
 
@@ -9,7 +9,7 @@ var Title = Ti.UI.createLabel({
     height: 44,
     width: Ti.UI.FILL,
     backgroundColor: 'white',
-    text: 'Vertical layout view',
+    text: 'Horizontal layout view',
     color: 'black',
     textAlign: Ti.UI.TEXT_ALIGNMENT_CENTER
 });
