@@ -15,37 +15,37 @@ var Title = Ti.UI.createLabel({
 });
 
 var view1 = Ti.UI.createView({
-    backgroundColor: 'red',
-    height: 100,
-    width: 100,
+    backgroundColor: 'red',       
+    height: 80,
+    width: 80,
     top: 0
 });
 
 var view2 = Ti.UI.createView({
-    backgroundColor: 'yellow',
-    height: 100,
-    width: 100,
+    backgroundImage: '/images/appcelerator.png',
+    height: 80,
+    width: 80,
     top: 0
 });
 
 var view3 = Ti.UI.createView({
-    backgroundColor: 'green',
-    height: 100,
-    width: 100,
+    backgroundColor: 'green',    
+    height: 80,
+    width: 80,
     top: 0
 });
 
 var view4 = Ti.UI.createView({
-    backgroundColor: 'purple',
-    height: 100,
-    width: 100,
+    backgroundImage: '/images/alloy.png',
+    height: 80,
+    width: 80,
     top: 0
 });
 
 var view5 = Ti.UI.createView({
     backgroundColor: 'blue',
-    height: 100,
-    width: 100,
+    height: 80,
+    width: 80,
     top: 0
 });
 
