@@ -1,60 +1,30 @@
-var win = Ti.UI.createWindow({
-    backgroundColor: 'white',
-    layout: 'vertical',
-    navBarHidden: true
-});
+/*
+ * A tabbed application, consisting of multiple stacks of windows associated with tabs in a tab group.  
+ * A starting point for tab-based application with multiple top-level windows. 
+ * Requires Titanium Mobile SDK 2.0.0+.
+ * 
+ * In app.js, we generally take care of a few things:
+ * - Bootstrap the application with any data we need
+ * - Check for dependencies like device type, platform version or network connection
+ * - Require and open our top-level UI component
+ *  
+ */
 
-var Title = Ti.UI.createLabel({
-    top: 20,
-    height: 44,
-    width: Ti.UI.FILL,
-    backgroundColor: 'white',
-    text: 'Vertical layout view',
-    color: 'black',
-    textAlign: Ti.UI.TEXT_ALIGNMENT_CENTER
-});
+//bootstrap and check dependencies
+if (Ti.version < 2.0 ) {
+    alert('Sorry - this application template requires Titanium Mobile SDK 2.0 or later');
+}
 
-var view1 = Ti.UI.createView({
-    backgroundColor: 'red',
-    height: 100,
-    width: 100,
-    top: 0
-});
-
-var view2 = Ti.UI.createView({
-    backgroundColor: 'yellow',
-    height: 100,
-    width: 100,
-    top: 0
-});
-
-var view3 = Ti.UI.createView({
-    backgroundColor: 'green',
-    height: 100,
-    width: 100,
-    top: 0
-});
-
-var view4 = Ti.UI.createView({
-    backgroundColor: 'purple',
-    height: 100,
-    width: 100,
-    top: 0
-});
-
-var view5 = Ti.UI.createView({
-    backgroundColor: 'blue',
-    height: 100,
-    width: 100,
-    top: 0
-});
-
-win.add(Title);
-win.add(view1);
-win.add(view2);
-win.add(view3);
-win.add(view4);
-win.add(view5);
-
-win.open();
-
+// This is a single context application with mutliple windows in a stack
+(function() {
+    //determine platform and form factor and render approproate components
+    var osname = Ti.Platform.osname,
+        version = Ti.Platform.version,
+        height = Ti.Platform.displayCaps.platformHeight,
+        width = Ti.Platform.displayCaps.platformWidth;
+    
+    //create locate opening tab and window
+    var mainWindow = require('ui/common/LayoutView');
+    var newWindow = new mainWindow();
+    newWindow.open();
+})();
