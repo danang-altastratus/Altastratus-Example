@@ -1,64 +1,57 @@
-// this sets the background color of the master UIView (when there are no windows/tab groups on it)
-Titanium.UI.setBackgroundColor('#000');
+/**
+ * Map view with annotation
+ * @author Danang Iswadi
+ * 
+ */
 
-// create tab group
-var tabGroup = Titanium.UI.createTabGroup();
+var MapModule = require('ti.map');
+var win = Ti.UI.createWindow({backgroundColor: 'white', navBarHidden: true});
 
+var rc = MapModule.isGooglePlayServicesAvailable();
+switch (rc) {
+    case MapModule.SUCCESS:
+        Ti.API.info('Google Play services is installed.');
+        break;
+    case MapModule.SERVICE_MISSING:
+        alert('Google Play services is missing. Please install Google Play services from the Google Play store.');
+        break;
+    case MapModule.SERVICE_VERSION_UPDATE_REQUIRED:
+        alert('Google Play services is out of date. Please update Google Play services.');
+        break;
+    case MapModule.SERVICE_DISABLED:
+        alert('Google Play services is disabled. Please enable Google Play services.');
+        break;
+    case MapModule.SERVICE_INVALID:
+        alert('Google Play services cannot be authenticated. Reinstall Google Play services.');
+        break;
+    default:
+        alert('Unknown error.');
+        break;
+}
 
-//
-// create base UI tab and root window
-//
-var win1 = Titanium.UI.createWindow({  
-    title:'Tab 1',
-    backgroundColor:'#fff'
-});
-var tab1 = Titanium.UI.createTab({  
-    icon:'KS_nav_views.png',
-    title:'Tab 1',
-    window:win1
-});
-
-var label1 = Titanium.UI.createLabel({
-	color:'#999',
-	text:'I am Window 1',
-	font:{fontSize:20,fontFamily:'Helvetica Neue'},
-	textAlign:'center',
-	width:'auto'
-});
-
-win1.add(label1);
-
-//
-// create controls tab and root window
-//
-var win2 = Titanium.UI.createWindow({  
-    title:'Tab 2',
-    backgroundColor:'#fff'
-});
-var tab2 = Titanium.UI.createTab({  
-    icon:'KS_nav_ui.png',
-    title:'Tab 2',
-    window:win2
+var modernlandView = MapModule.createAnnotation({
+    latitude: -6.197766,
+    longitude: 106.647146,
+    title: "Padang Golf Modernland",
+    subtitle: 'Jl. Modern Golf Raya no.1, Tangerang',
+    pincolor: MapModule.ANNOTATION_RED,
+    myid: 1
 });
 
-var label2 = Titanium.UI.createLabel({
-	color:'#999',
-	text:'I am Window 2',
-	font:{fontSize:20,fontFamily:'Helvetica Neue'},
-	textAlign:'center',
-	width:'auto'
+var mapView = MapModule.createView({
+    mapType: MapModule.NORMAL_TYPE,
+    region: {latitude:-6.197766, longitude:106.647146,
+            latitudeDelta:0.01, longitudeDelta:0.01},
+    animate: true,
+    regionFit: true,
+    userLocation: true,
+    annotations: [modernlandView]
 });
 
-win2.add(label2);
+win.add(mapView);
 
+mapView.addEventListener('click', function(evt) {
+    Ti.API.info("Annotation " + evt.title + " clicked, id: " + evt.annotation.myid);
+});
 
-
-//
-//  add tabs
-//
-tabGroup.addTab(tab1);  
-tabGroup.addTab(tab2);  
-
-
-// open tab group
-tabGroup.open();
+win.open();
