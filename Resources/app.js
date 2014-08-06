@@ -1,3 +1,8 @@
+/**
+ * Implementation of the window layout vertical & horizontal
+ * @author Danang Iswadi
+ */
+
 var win = Ti.UI.createWindow({
     backgroundColor: 'black',
     layout: 'vertical'
@@ -14,54 +19,60 @@ var Title = Ti.UI.createLabel({
     height: 64,
     width: Ti.UI.FILL,
     backgroundColor: 'white',
-    text: 'Vertical layout view',
+    text: 'Horizontal layout view',
     color: 'black',
     textAlign: Ti.UI.TEXT_ALIGNMENT_CENTER
 });
 
 var view1 = Ti.UI.createView({
-    backgroundColor: 'red',       
-    height: 80,
-    width: 80,
-    top: 0
+    backgroundColor: 'red',
+    left: 4,           
+    height: 75,
+    width: 75,
+    top: 4
 });
 
 var view2 = Ti.UI.createView({
     backgroundColor: 'white',
     backgroundImage: '/images/appcelerator.png',
-    height: 80,
-    width: 80,
-    top: 0
+    left: 4,
+    height: 75,
+    width: 75,
+    top: 4
 });
 
 var view3 = Ti.UI.createView({
-    backgroundColor: 'green',    
-    height: 80,
-    width: 80,
-    top: 0
+    backgroundColor: 'green',  
+    left: 4,  
+    height: 75,
+    width: 75,
+    top: 4
 });
 
 var view4 = Ti.UI.createView({
     backgroundColor: 'white',
     backgroundImage: '/images/alloy.png',
-    height: 80,
-    width: 80,
-    top: 0
+    left: 4,
+    height: 75,
+    width: 75,
+    top: 4
 });
 
 var view5 = Ti.UI.createView({
     backgroundColor: 'blue',
-    height: 80,
-    width: 80,
-    top: 0
+    left: 4,
+    height: 75,
+    width: 75,
+    top: 4
 });
 
 var view6 = Ti.UI.createView({
     backgroundColor: 'white',
     backgroundImage: '/images/appcelerator-titanium.png',
-    height: 80,
-    width: 80,
-    top: 0
+    left: 4,
+    height: 75,
+    width: 75,
+    top: 4
 });
 
 win.add(Title);
