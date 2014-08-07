@@ -5,7 +5,7 @@
 
 var win = Ti.UI.createWindow({
     backgroundColor: 'black',
-    layout: 'vertical'
+    layout: 'horizontal'
 });
 
 if (Ti.Platform.Android) {
